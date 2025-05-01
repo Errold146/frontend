@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AdminMenu, Logo, ToastNotification } from "@/components";
 import { verifySession } from "@/src";
 
@@ -38,7 +39,7 @@ export default async function AdminLayout({
                     <p className="text-center">
                         Todos los Derechos Reservados MicroWeb-cr {new Date().getFullYear()}
                     </p>
-                    <img
+                    <Image
                         src="/favicon.png"
                         alt="Logo CashTrackr"
                         className="w-8 h-8 md:w-10 md:h-10"

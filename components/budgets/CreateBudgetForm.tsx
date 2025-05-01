@@ -25,7 +25,7 @@ export default function CreateBudgetForm() {
             toast.success(state.success)
             router.push('/admin')
         }
-    }, [state])
+    }, [state, router])
 
     return (
         <form

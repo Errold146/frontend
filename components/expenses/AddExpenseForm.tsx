@@ -29,7 +29,7 @@ export default function AddExpenseForm() {
             toast.success(state.success)
             router.push(`/admin/budgets/${id}`)
         }
-    }, [state])
+    }, [state, router, id])
 
     return (
         <>

@@ -28,7 +28,7 @@ export default function RegisterForm() {
             action={dispatch}
         >
 
-            {(state.errors ?? []).map(error => <ErrorMessage>{error}</ErrorMessage>)}
+            {(state.errors ?? []).map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
 
             {state.success && <SuccessMessage>{state.success}</SuccessMessage>}
 

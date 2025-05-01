@@ -4,7 +4,7 @@ import { useParams, usePathname, useRouter, useSearchParams } from "next/navigat
 import { DialogTitle } from "@headlessui/react";
 import { useFormState } from "react-dom";
 import { deleteExpense } from "@/actions";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
 
 type DeleteExpenseForm = {
@@ -19,13 +19,11 @@ export default function DeleteExpenseForm() {
     const pathname = usePathname()
     const router = useRouter()
 
-    const closeModal = () => {
-        const hideModal = new URLSearchParams(searchParams.toString())
-        Array.from(hideModal.entries()).forEach(([key]) => {
-            hideModal.delete(key)
-        });
-        router.replace(`${pathname}?${hideModal}`)
-    }
+    const closeModal = useCallback(() => {
+        const hideModal = new URLSearchParams(searchParams.toString());
+        hideModal.delete("deleteExpenseId");
+        router.replace(`${pathname}?${hideModal}`);
+    }, [searchParams, pathname, router]); // Dependencias necesarias
 
     const deleteExpenseWithBudgetId = deleteExpense.bind(null, {
         budgetId: +budgetId,
@@ -40,7 +38,7 @@ export default function DeleteExpenseForm() {
         if ( !Number.isInteger(+budgetId) || !Number.isInteger(+expenseId) ) {
             closeModal()
         }
-    }, [])
+    }, [budgetId, closeModal, expenseId])
 
     useEffect(() => {
         if ( state.errors ) {
@@ -52,7 +50,7 @@ export default function DeleteExpenseForm() {
             closeModal()
             toast.success(state.success)
         }
-    }, [state])
+    }, [state, budgetId, closeModal, expenseId])
 
     return (
         <>

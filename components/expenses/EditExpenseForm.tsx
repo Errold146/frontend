@@ -33,7 +33,7 @@ export default function EditExpenseForm() {
             .then(res => res.json())
             .then(data => setExpense(data))
         
-    }, [])
+    }, [budgetId, expenseId])
 
     useEffect(() => {
         if ( state.errors ) {
@@ -45,7 +45,7 @@ export default function EditExpenseForm() {
             router.push(`/admin/budgets/${budgetId}`)
             toast.success(state.success)
         }
-    }, [state])
+    }, [state, budgetId, router])
 
     return (
         <>

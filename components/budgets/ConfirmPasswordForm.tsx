@@ -1,11 +1,11 @@
 "use client"
 
+import { useEffect, useCallback } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
-import { DialogTitle } from "@headlessui/react"
 import { useFormState } from "react-dom"
-import { deleteBudget } from "@/actions"
-import { useEffect } from "react"
+import { DialogTitle } from "@headlessui/react"
 import { toast } from "react-toastify"
+import { deleteBudget } from "@/actions"
 
 export default function ConfirmPasswordForm() {
     const pathname = usePathname()
@@ -19,6 +19,12 @@ export default function ConfirmPasswordForm() {
         success: ''
     })
 
+    const closeModal = useCallback(() => {
+        const hideModal = new URLSearchParams(searchParams.toString());
+        hideModal.delete("deleteBudgetId");
+        router.replace(`${pathname}?${hideModal}`);
+    }, [searchParams, pathname, router]); // Agregar dependencias relevantes
+
     useEffect(() => {
         if (state.errors) {
             state.errors.forEach(err => {
@@ -30,13 +36,7 @@ export default function ConfirmPasswordForm() {
             closeModal()
             router.push('/admin')
         }
-    }, [state])
-
-    const closeModal = () => {
-        const hideModal = new URLSearchParams(searchParams.toString())
-        hideModal.delete('deleteBudgetId')
-        router.replace(`${pathname}?${hideModal}`)
-    }
+    }, [state, closeModal, router])
 
     return (
         <>
