@@ -23,7 +23,7 @@ export default function RegisterForm() {
 
         <form
             ref={ref}
-            className="mt-14 space-y-5"
+            className="mt-14 space-y-5 w-full"
             noValidate
             action={dispatch}
         >
@@ -32,7 +32,7 @@ export default function RegisterForm() {
 
             {state.success && <SuccessMessage>{state.success}</SuccessMessage>}
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-">
                 <label
                     className="font-bold text-2xl"
                     htmlFor="email"

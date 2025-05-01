@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function RegisterPage() {
 
     return (
-        <>
+        <div className="flex flex-col justify-center items-center lg:min-h-screen lg:overflow-hidden">
            <h1 className=" font-black text-6xl text-purple-800">Crea una Cuenta</h1> 
            <p className=" text-3xl font-bold">y controla tus <span className=" text-amber-500">finanzas</span></p>
 
@@ -31,6 +31,6 @@ export default function RegisterPage() {
                     ¿Olvidé mi password? Restablecer Password
                 </Link>
             </nav>
-        </>
+        </div>
     )
 }

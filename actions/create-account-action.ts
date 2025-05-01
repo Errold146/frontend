@@ -15,12 +15,14 @@ export async function register(state: ActionStateType, payload: FormData) {
         password_confirmation: payload.get('password_confirmation'),
     };
 
+    // Validar
     const register = RegisterSchema.safeParse(registerData);
     if (!register.success) {
         const errors = register.error.errors.map(error => error.message);
         return { errors, success: state.success };
     }
 
+    // Registrar el usuario
     const url = `${process.env.API_URL}/auth/create-account`;
     const req = await fetch(url, {
         method: 'POST',

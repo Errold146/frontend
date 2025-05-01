@@ -1,0 +1,7 @@
+export { default as RegisterForm } from './RegisterForm'
+export { default as LoginForm } from './LoginForm'
+export { default as ForgotPasswordForm } from './ForgotPasswordForm'
+export { default as ConfirmAccountForm } from './ConfirmAccountForm'
+export { default as ValidateTokenForm } from './ValidateTokenForm'
+export { default as ResetPasswordForm } from './ResetPasswordForm'
+export { default as PasswordResetHandler } from './PasswordResetHandler'
