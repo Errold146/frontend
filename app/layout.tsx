@@ -20,7 +20,7 @@ export default function RootLayout({
     return (
         <html lang="es">
             <Head>
-                <link rel="ico" href="/favicon.png" type="image/png" />
+                <link rel="icon" href="/favicon.png" type="image/png" />
             </Head>
             <body
                 className={outfit.className}

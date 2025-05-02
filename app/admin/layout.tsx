@@ -39,11 +39,7 @@ export default async function AdminLayout({
                     <p className="text-center">
                         Todos los Derechos Reservados MicroWeb-cr {new Date().getFullYear()}
                     </p>
-                    <Image
-                        src="/favicon.png"
-                        alt="Logo CashTrackr"
-                        className="w-8 h-8 md:w-10 md:h-10"
-                    />
+                    <Image src="/favicon.png" alt="Favicon" width={32} height={32} />
                 </div>
             </footer>
         </>
